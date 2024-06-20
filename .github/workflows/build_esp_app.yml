@@ -13,12 +13,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # with:
-        #   submodules: 'recursive'
+        with:
+          submodules: 'recursive'
       - name: Build Test Application with ESP-IDF
         uses: espressif/esp-idf-ci-action@v1
         with:
-          esp_idf_version: "5.2.1" # latest is the default version
+          esp_idf_version: v5.2.1
           target: esp32
       - name: Test Embeded
         uses: wokwi/wokwi-ci-action@v1
