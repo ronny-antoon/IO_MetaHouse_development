@@ -9,24 +9,14 @@ jobs:
   trigger-update-version:
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger Update Version Workflow
-      run: |
-        curl -X POST \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/actions/workflows/update_version.yml/dispatches \
-          -d '{"ref":"main"}'
-
-    trigger-update-version2:
+    - uses: Trigger Update Version Workflow
+      path: .github/workflows/release_helper/update_version.yml
+      
+  trigger-update-version1:
     runs-on: ubuntu-latest
     steps:
-    - name: Trigger Update Version Workflow
-      run: |
-        curl -X POST \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/actions/workflows/update_version.yml/dispatches \
-          -d '{"ref":"main"}'
+    - uses: Trigger Update Version Workflow
+      path: .github/workflows/release_helper/update_version.yml
 
   # trigger-publish-idf:
   #   runs-on: ubuntu-latest
