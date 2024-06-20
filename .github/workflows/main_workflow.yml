@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger Update Version Workflow
-      uses: .github/workflows/release_helper/update_version.yml
+      uses: release_helper/update_version.yml
 
   trigger-update-version1:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger Update Version Workflow
-      uses: .github/workflows/release_helper/update_version.yml
+      uses: release_helper/update_version.yml
 
   # trigger-publish-idf:
   #   runs-on: ubuntu-latest
