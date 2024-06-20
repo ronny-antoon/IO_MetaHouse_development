@@ -1,0 +1,9 @@
+version: "0.0.5"
+license: "MIT"
+description: "IO_MetaHouse: ESP32 relay and button module handler."
+dependencies:
+  idf:
+    version: ">=4.1.0"
+  espressif/button:
+    version: "3.2.0"
+    require: "public"
