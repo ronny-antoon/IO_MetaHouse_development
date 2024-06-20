@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger Update Version Workflow
-      uses: release_helper/update_version.yml
-      path: release_helper/update_version.yml
+      uses: .github\workflows\release_helper\update_version.yml
+      
 
   # trigger-publish-idf:
   #   runs-on: ubuntu-latest
