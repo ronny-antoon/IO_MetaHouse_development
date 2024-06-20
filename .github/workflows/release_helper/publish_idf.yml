@@ -1,0 +1,19 @@
+name: Publish to IDF Registry
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish-idf:
+    runs-on: ubuntu-latest
+
+steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+      - name: Upload component to the component registry
+        uses: espressif/upload-components-ci-action@v1
+        with:
+          directories: "components/IO_MetaHouse"
+          name: "IO_MetaHouse"
+          api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
