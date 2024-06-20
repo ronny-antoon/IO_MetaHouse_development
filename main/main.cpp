@@ -18,5 +18,9 @@ TEST_GROUP_RUNNER(ButtonModule_test) { RUN_TEST_CASE(ButtonModule_test, TestButt
 static void run_all_tests(void) { RUN_TEST_GROUP(ButtonModule_test); }
 
 // Test application main
-void app_main(void) { UNITY_MAIN_FUNC(run_all_tests); }
+void app_main(void) {
+  UNITY_MAIN_FUNC(run_all_tests);
+  // log GitHub CI has been completed
+  printf("GitHub CI has been completed\n");
+}
 }  // extern "C"
