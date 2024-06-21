@@ -9,3 +9,5 @@ on:
 jobs:
   trigger-update-version:
     uses: ./.github/workflows/update_version.yml
+  trigger-update-version2:
+    uses: ./.github/workflows/update_version.yml
