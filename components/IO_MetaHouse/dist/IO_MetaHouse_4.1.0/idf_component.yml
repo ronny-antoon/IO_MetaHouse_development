@@ -6,4 +6,8 @@ dependencies:
     version: '>=4.1.0'
 description: 'IO_MetaHouse: ESP32 relay and button module handler.'
 license: MIT
+repository: git://github.com/ronny-antoon/IO_MetaHouse_development.git
+repository_info:
+  commit_sha: d66d63515389b43d38d2601d00135c9f93b81cd4
+  path: components/IO_MetaHouse
 version: 4.1.0
