@@ -8,7 +8,7 @@ on:
 
 jobs:
   trigger-update-version:
-    uses: ./.github/workflows/release_helper/update_version.yml
+    uses: ./.github/workflows/update_version.yml
     
 
   # trigger-publish-idf:
