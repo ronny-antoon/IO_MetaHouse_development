@@ -10,7 +10,7 @@ jobs:
   trigger-update-version:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name:  Trigger Update Version Workflow 
       uses: .github/workflows/release_helper/update_version.yml
     
