@@ -55,5 +55,6 @@ jobs:
       run: |
         git add .
         git commit -m "Update component version"
+        git push origin
         git tag latest
         git push origin latest
