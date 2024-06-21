@@ -1,7 +1,8 @@
 name: Publish to IDF Registry
 
 on:
-  workflow_dispatch:
+  workflow_call: {}
+  workflow_dispatch: {}
 
 jobs:
   publish-idf:
