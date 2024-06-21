@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.MY_GITHUB_TOKEN }}
+        submodules: "recursive"
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -25,17 +29,31 @@ jobs:
       id: update_version
       run: python ./scripts/updateVersionComponent.py ./components/IO_MetaHouse/idf_component.yml
 
-  publish-idf:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: "recursive"
+    - name: Upload component to the component registry
+      uses: espressif/upload-components-ci-action@v1
+      with:
+        directories: "components/IO_MetaHouse"
+        name: "IO_MetaHouse"
+        namespace: "ronny-antoon"
+        api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
 
-      - name: Upload component to the component registry
-        uses: espressif/upload-components-ci-action@v1
-        with:
-          directories: "components/IO_MetaHouse"
-          name: "IO_MetaHouse"
-          namespace: "ronny-antoon"
-          api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
+    - name: Set up Git
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+    - name: Remove "latest" release
+      run: |
+        if git rev-parse refs/tags/latest >/dev/null 2>&1; then
+          git tag -d latest
+          git push origin :refs/tags/latest
+        else
+          echo "Tag 'latest' does not exist, skipping deletion."
+        fi
+
+    - name: Create new "latest" release
+      run: |
+        git add .
+        git commit -m "Update component version"
+        git tag latest
+        git push origin latest
